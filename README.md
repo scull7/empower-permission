@@ -20,18 +20,30 @@ Example Token Strings:
 `PermissionMap` you provide.
 
 ### PermissionMap
-  This is a map of URL strings to `PermissionTokens`
+
+This is a map of URL strings to `PermissionTokens`
+  
+Example Map:
+```
+{
+  "url/token/entity": "token:entity",
+  "url/token/entity/action": "token:entity:action!"
+}
+```
+***Note*** adding `!` to the end of your token marks anything after the last
+`:` as an action.
+  
   
 ### Method
   
-  This is either an HTTP Method or a custom action.  It will be interpreted 
-  into one of the following:
-  
-  - ***READ*** _(GET)_
-  - ***WRITE*** _(POST / PUT)_
-  - ***CREATE*** _(POST)_
-  - ***UPDATE*** _(PUT)_
-  - ***DELETE*** _(DELETE)_
-  - ***CUSTOM ACTION***
+This is either an HTTP Method or a custom action.  It will be interpreted 
+into one of the following:
+
+- ***READ*** _(GET)_
+- ***WRITE*** _(POST / PUT)_
+- ***CREATE*** _(POST)_
+- ***UPDATE*** _(PUT)_
+- ***DELETE*** _(DELETE)_
+- ***CUSTOM ACTION***
 
 
