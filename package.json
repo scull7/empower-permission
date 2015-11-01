@@ -1,0 +1,36 @@
+{
+  "name": "empower-permission",
+  "version": "1.0.0",
+  "description": "Given a permission set and a request return a permission token.",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha && ./node_modules/.bin/istanbul report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scull7/empower-permission.git"
+  },
+  "keywords": [
+    "permission",
+    "authorization",
+    "role"
+  ],
+  "author": "Nathan A Sculli <scull7@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scull7/empower-permission/issues"
+  },
+  "homepage": "https://github.com/scull7/empower-permission#readme",
+  "dependencies": {
+    "path-to-regexp": "^1.2.1"
+  },
+  "devDependencies": {
+    "coffee-coverage": "^0.7.0",
+    "coffee-script": "^1.10.0",
+    "istanbul": "^0.4.0",
+    "mocha": "^2.3.3"
+  }
+}
