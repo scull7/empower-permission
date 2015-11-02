@@ -17,6 +17,9 @@ getLastItem     = (token) -> (token.split ':').pop()
 # isAction :: String -> Bool
 isAction        = (str) -> (str.substr -1) is '!'
 
+# hasAction :: String -> Bool
+hasAction       = (token) -> isAction (getLastItem token)
+
 # getAction :: PermissionToken -> String
 getAction       = (token, defaultAction = DEFAULT_ACTION) ->
   actionOrDefault (getLastItem token), defaultAction
@@ -28,6 +31,7 @@ module.exports  =
   PermissionToken : PermissionToken
   getLastItem     : getLastItem
   isAction        : isAction
+  hasAction       : hasAction
   getAction       : getAction
   addAction       : addAction
   actionOrDefault : actionOrDefault

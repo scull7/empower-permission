@@ -60,6 +60,20 @@ describe 'Permission Token', ->
       actual    = Token.isAction 'test'
       assert.equal actual, expected
 
+  describe 'hasAction', ->
+
+    it 'should return true if the last item is an action', ->
+
+      expected  = true
+      actual    = Token.hasAction 'my:test:token:action!'
+      assert.equal actual, expected
+
+    it 'should return false if the last item is not an action', ->
+
+      expected  = false
+      actual    = Token.hasAction 'my:test:token'
+      assert.equal actual, expected
+
   describe 'getAction', ->
 
     it 'should return the last token if it ends in a "!"', ->
