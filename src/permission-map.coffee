@@ -1,23 +1,33 @@
 pathToRegExp  = require 'path-to-regexp'
 
-DEFAULT_TOKEN = "*"
+DEFAULT_TOKEN = '*'
 
-# _match :: String -> String -> Bool
-_match  = (url, path) -> pathToRegExp(path).test url
 
-# type alias PermissionMap = Object
-PermissionMap = (map  = {}) -> map
+# _match :: String -> Permission -> Bool
+_match  = (path, perm) -> pathToRegExp(perm.path).test path
 
-# addToken :: PermissionMap -> String -> PermissionToken -> PermissionMap
-addToken  = (map, path, token) ->
-  map[path] = token
-  map
 
-# getToken :: PermissionMap -> String -> PermissionToken
-getToken  = (map, url) ->
-  (token for path, token of map when _match url, path)[0] or DEFAULT_TOKEN
+# Permission :: String -> String -> { path: String, token: String }
+Permission = (path, token) ->
+  path  : path
+  token : token
+
+
+# type alias PermissionMap = Array Permission
+PermissionMap = () -> []
+
+
+# addToken :: PermissionMap -> String -> String -> PermissionMap
+addToken  = (map, path, token) -> map.concat [ (Permission path, token) ]
+
+
+# getToken :: PermissionMap -> String -> Permission
+getToken  = (map, path) ->
+  (map.find (_match.bind null, path))?.token or DEFAULT_TOKEN
+
 
 module.exports  =
+  Permission    : Permission
   PermissionMap : PermissionMap
   addToken      : addToken
   getToken      : getToken
