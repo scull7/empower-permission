@@ -13,10 +13,6 @@ Permission = (path, token) ->
   token : token
 
 
-# type alias PermissionMap = Array Permission
-PermissionMap = () -> []
-
-
 # addToken :: PermissionMap -> String -> String -> PermissionMap
 addToken  = (map, path, token) -> map.concat [ (Permission path, token) ]
 
@@ -28,6 +24,5 @@ getToken  = (map, path) ->
 
 module.exports  =
   Permission    : Permission
-  PermissionMap : PermissionMap
   addToken      : addToken
   getToken      : getToken

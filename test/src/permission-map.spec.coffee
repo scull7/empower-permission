@@ -4,14 +4,6 @@ Map     = require '../../src/permission-map.coffee'
 
 describe 'Permission Map', ->
 
-  describe 'PermissionMap', ->
-
-    it 'should return an empty object with called without a parameter', ->
-
-      expected  = []
-      actual    = Map.PermissionMap()
-      assert.deepEqual actual, expected
-
   describe 'addToken', ->
 
     it 'should add the given path and token to the given map object', ->
