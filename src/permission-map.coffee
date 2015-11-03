@@ -1,4 +1,3 @@
-require './polyfill'
 pathToRegExp  = require 'path-to-regexp'
 
 DEFAULT_TOKEN = '*'
@@ -20,7 +19,10 @@ addToken  = (map, path, token) -> map.concat [ (Permission path, token) ]
 
 # getToken :: PermissionMap -> String -> Permission
 getToken  = (map, path) ->
-  (map.find (_match.bind null, path))?.token or DEFAULT_TOKEN
+  for perm in map when _match(path, perm)
+    return perm.token
+
+  return DEFAULT_TOKEN
 
 
 module.exports  =
