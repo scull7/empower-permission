@@ -1,3 +1,4 @@
+require './polyfill'
 pathToRegExp  = require 'path-to-regexp'
 
 DEFAULT_TOKEN = '*'
