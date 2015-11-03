@@ -1,6 +1,6 @@
 {
   "name": "empower-permission",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Given a permission set and a request return a permission token.",
   "main": "dist/index.js",
   "directories": {
