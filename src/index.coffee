@@ -1,5 +1,5 @@
-Map             = require  './permission-map.coffee'
-Token           = require './permission-token.coffee'
+Map             = require  './permission-map'
+Token           = require './permission-token'
 DEFAULT_ACTION  = '*'
 
 
