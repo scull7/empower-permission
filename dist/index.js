@@ -2,9 +2,9 @@
 (function() {
   var DEFAULT_ACTION, Map, PermissionMap, Token;
 
-  Map = require('./permission-map.coffee');
+  Map = require('./permission-map');
 
-  Token = require('./permission-token.coffee');
+  Token = require('./permission-token');
 
   DEFAULT_ACTION = '*';
 
