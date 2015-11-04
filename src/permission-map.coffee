@@ -4,12 +4,13 @@ DEFAULT_TOKEN = '*'
 
 
 # _match :: String -> Permission -> Bool
-_match  = (path, perm) -> pathToRegExp(perm.path).test path
+_match  = (path, perm) ->
+  perm.path.test path
 
 
-# Permission :: String -> String -> { path: String, token: String }
+# Permission :: String -> String -> { path: RegExp, token: String }
 Permission = (path, token) ->
-  path  : path
+  path  : (pathToRegExp path)
   token : token
 
 

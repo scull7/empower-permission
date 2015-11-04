@@ -9,8 +9,8 @@ If found, then it will return the token string associated with that path.
 Otherwise, it will return the `GeneralAccessToken` or  _'*'_.  
 
 Paths will be parsed using the `pathToRegexp` module.
-
-### PermissionToken
+g
+## PermissionToken
 
 Example Token Strings:
 ```javascript
@@ -19,7 +19,7 @@ Example Token Strings:
 'token:entity:sub-entity:read'
 ```
 
-### PermissionMap
+## PermissionMap
 
 This is a map of path strings to `PermissionTokens`
 
@@ -31,4 +31,41 @@ Example Map:
   "/url/token": "url:token:list",
   "/url/token/:tokenId/action": "url:token:action"
 }
+```
+
+## Usage
+
+### Building the Map from JSON
+```javascript
+
+var PermissionMap = require('empower-permission');
+var map = PermissionMap.fromJson({
+  "/url/token/entity/:entityId": "url:token:entity",
+  "/url/token/:tokenId": "url:token",
+  "/url/token": "url:token:list",
+  "/url/token/:tokenId/action": "url:token:action"
+}}
+
+var token = map.getToken("/url/token/entity/1234");
+
+console.log(token); // will output "url:token:entity"
+
+```
+
+### Building the Map Programmatically
+```javascript
+
+var PermissionMap = require('empower-permission');
+var map = PermissionMap();
+
+map
+  .addToken("/url/token/entity/:entityId", "url:token:entity")
+  .addToken("/url/token/:tokenId", "url:token")
+  .addToken("/url/token", "url:token:list")
+  .addToken("/url/token/:tokenId/action", "url:token:action")
+
+var token = map.getToken("/url/token");
+
+console.log(token); // will output "url:token:list"
+
 ```

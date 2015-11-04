@@ -1,5 +1,5 @@
-Map             = require  './permission-map'
-Token           = require './permission-token'
+Map             = require './permission-map'
+MapBuilder      = require './permission-map-builder'
 DEFAULT_ACTION  = '*'
 
 
@@ -18,15 +18,16 @@ class PermissionMap
 
 
   # getToken :: String -> String -> String
-  getToken: (path, action) ->
-    token   = Map.getToken @map, path
-    tokenAction = Token.getAction token, action
-
-    return (if tokenAction is action
-      (Token.addAction token, action)
-    else token).replace /!/g, ''
+  getToken: (path) -> Map.getToken @map, path
 
 
-module.exports  =
-  Map           : -> new PermissionMap()
-  Permission    : Map.Permission
+Factory = -> new PermissionMap()
+Factory.fromJson  = (json) ->
+  map           = MapBuilder.fromJson json
+  permissionMap = new PermissionMap()
+  permissionMap.map = map
+
+  return permissionMap
+
+
+module.exports  = Factory
