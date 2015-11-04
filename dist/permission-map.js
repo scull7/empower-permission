@@ -7,12 +7,12 @@
   DEFAULT_TOKEN = '*';
 
   _match = function(path, perm) {
-    return pathToRegExp(perm.path).test(path);
+    return perm.path.test(path);
   };
 
   Permission = function(path, token) {
     return {
-      path: path,
+      path: pathToRegExp(path),
       token: token
     };
   };
